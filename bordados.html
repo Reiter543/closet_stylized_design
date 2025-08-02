@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiseModa - Diseño de Bordados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #8B1A1A;
+            color: white;
+            padding: 10px 0;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .main-content {
+            display: flex;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        .embroidery-options {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .preview-area {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            color: #8B1A1A;
+            border-bottom: 2px solid #8B1A1A;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .option-group {
+            margin-bottom: 20px;
+        }
+        .option-title {
+            color: #8B1A1A;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .color-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .color-option.selected {
+            border: 2px solid #000;
+        }
+        .pattern-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .pattern-option {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .pattern-option.selected {
+            border: 2px solid #8B1A1A;
+        }
+        .pattern-img {
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+        }
+        .text-option {
+            margin-bottom: 15px;
+        }
+        .text-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        .font-selector {
+            width: 100%;
+            padding: 8px;
+        }
+        .canvas-container {
+            border: 1px dashed #ccc;
+            margin-bottom: 20px;
+            position: relative;
+            height: 300px;
+            background-color: #f9f9f9;
+        }
+        .canvas-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .tshirt-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .embroidery-preview {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            max-width: 120px;
+            max-height: 120px;
+            font-weight: bold;
+            text-align: center;
+            /* Posición inicial (pecho izquierdo) */
+            top: 30%;
+            left: 30%;
+        }
+        .price-summary {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .price-total {
+            font-weight: bold;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .button {
+            background-color: #8B1A1A;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .button:hover {
+            background-color: #6d1414;
+        }
+        .button-secondary {
+            background-color: #555;
+        }
+        .button-secondary:hover {
+            background-color: #444;
+        }
+        /* Tamaños de bordado */
+        .embroidery-preview.pequeno {
+            font-size: 14px;
+        }
+        .embroidery-preview.mediano {
+            font-size: 18px;
+        }
+        .embroidery-preview.grande {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Closet Stylized</h1>
+            <div class="nav">
+                <a href="inicio.html">Inicio</a>
+                <a href="diseño.html">Diseñar</a>
+                <a href="galeria.html">Galería</a>
+                <a href="inicio_de_sesion.html">Iniciar Sesión</a>
+                <a href="carrito.html">carrito</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">Diseño de Bordados</h2>
+        
+        <div class="main-content">
+            <div class="embroidery-options">
+                <div class="option-group">
+                    <div class="option-title">Tipo de Bordado</div>
+                    <select class="font-selector" id="embroidery-type">
+                        <option value="simple">Bordado Simple</option>
+                        <option value="avanzado">Bordado Avanzado</option>
+                        <option value="personalizado">Personalizado</option>
+                    </select>
+                </div>
+                
+                <div class="option-group">
+                    <div class="option-title">Color de Hilo</div>
+                    <div class="color-options">
+                        <div class="color-option" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
+                        <div class="color-option selected" data-color="#000000" style="background-color: #000000;"></div>
+                        <div class="color-option" data-color="#8B1A1A" style="background-color: #8B1A1A;"></div>
+                        <div class="color-option" data-color="#4B4B4B" style="background-color: #4B4B4B;"></div>
+                        <div class="color-option" data-color="#FF0000" style="background-color: #FF0000;"></div>
+                        <div class="color-option" data-color="#0000FF" style="background-color: #0000FF;"></div>
+                        <div class="color-option" data-color="#008000" style="background-color: #008000;"></div>
+                        <div class="color-option" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <div class="option-title">Diseños Predefinidos</div>
+                    <div class="pattern-options">
+                        <div class="pattern-option" data-pattern="Floral">
+                            <img src="/api/placeholder/100/80" alt="Floral" class="pattern-img">
+                            <div>Floral</div>
+                        </div>
+                        <div class="pattern-option" data-pattern="Geométrico">
+                            <img src="/api/placeholder/100/80" alt="Geométrico" class="pattern-img">
+                            <div>Geométrico</div>
+                        </div>
+                        <div class="pattern-option selected" data-pattern="Iniciales">
+                            <img src="/api/placeholder/100/80" alt="Iniciales" class="pattern-img">
+                            <div>Iniciales</div>
+                        </div>
+                        <div class="pattern-option" data-pattern="Animal">
+                            <img src="/api/placeholder/100/80" alt="Animal" class="pattern-img">
+                            <div>Animal</div>
+                        </div>
+                        <div class="pattern-option" data-pattern="Abstracto">
+                            <img src="/api/placeholder/100/80" alt="Abstracto" class="pattern-img">
+                            <div>Abstracto</div>
+                        </div>
+                        <div class="pattern-option" data-pattern="Símbolo">
+                            <img src="/api/placeholder/100/80" alt="Símbolo" class="pattern-img">
+                            <div>Símbolo</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <div class="option-title">Texto Personalizado</div>
+                    <div class="text-option">
+                        <input type="text" id="custom-text" class="text-input" placeholder="Escribe tu texto aquí">
+                        <select class="font-selector" id="text-font">
+                            <option value="Arial">Script</option>
+                            <option value="Verdana">Block</option>
+                            <option value="Times New Roman">Serif</option>
+                            <option value="Helvetica">Sans-serif</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <div class="option-title">Ubicación del Bordado</div>
+                    <select class="font-selector" id="embroidery-location">
+                        <option value="pecho-izquierdo">Pecho Izquierdo</option>
+                        <option value="pecho-derecho">Pecho Derecho</option>
+                        <option value="espalda">Espalda</option>
+                        <option value="manga-izquierda">Manga Izquierda</option>
+                        <option value="manga-derecha">Manga Derecha</option>
+                    </select>
+                </div>
+                
+                <div class="option-group">
+                    <div class="option-title">Tamaño del Bordado</div>
+                    <select class="font-selector" id="embroidery-size">
+                        <option value="pequeno">Pequeño (5x5 cm)</option>
+                        <option value="mediano">Mediano (10x10 cm)</option>
+                        <option value="grande">Grande (15x15 cm)</option>
+                    </select>
+                </div>
+                
+                <button class="button" id="apply-design">Aplicar Diseño</button>
+                <button class="button button-secondary" id="clear-design">Limpiar Diseño</button>
+            </div>
+            
+            <div class="preview-area">
+                <div class="option-title">Vista Previa</div>
+                <div class="canvas-container">
+                    <div class="canvas-content">
+                        <img src="/api/placeholder/250/280" alt="Camiseta" class="tshirt-image" id="tshirt-image">
+                        <div id="embroidery-preview" class="embroidery-preview pequeno">
+                            Iniciales
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-summary">
+                    <div class="option-title">Resumen de Precio</div>
+                    <div class="price-item">
+                        <div>Prenda:</div>
+                        <div>25000 COP</div>
+                    </div>
+                    <div class="price-item">
+                        <div>Material:</div>
+                        <div>0 COP</div>
+                    </div>
+                    <div class="price-item">
+                        <div>Bordado:</div>
+                        <div id="embroidery-price">8000 COP</div>
+                    </div>
+                    <div class="price-item">
+                        <div>Diseño Personalizado:</div>
+                        <div id="custom-design-price">5000 COP</div>
+                    </div>
+                    <div class="price-item price-total">
+                        <div>Total:</div>
+                        <div id="total-price">38000 COP</div>
+                    </div>
+                </div>
+                
+                <button class="button">Añadir al Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ejecutar cuando el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables para almacenar las selecciones actuales
+            let selectedColor = "#000000";
+            let selectedPattern = "Iniciales";
+            let selectedText = "";
+            let selectedFont = "Arial";
+            let selectedLocation = "pecho-izquierdo";
+            let selectedSize = "pequeno";
+            let selectedType = "simple";
+            
+            // Precios base
+            const basePrenda = 25000;
+            const bordadoSimple = 8000;
+            const bordadoAvanzado = 12000;
+            const bordadoPersonalizado = 15000;
+            const disenoPredefinido = 5000;
+            const disenoPersonalizado = 8000;
+
+            // Elementos del DOM
+            const colorOptions = document.querySelectorAll('.color-option');
+            const patternOptions = document.querySelectorAll('.pattern-option');
+            const customTextInput = document.getElementById('custom-text');
+            const textFontSelect = document.getElementById('text-font');
+            const locationSelect = document.getElementById('embroidery-location');
+            const sizeSelect = document.getElementById('embroidery-size');
+            const typeSelect = document.getElementById('embroidery-type');
+            const applyDesignButton = document.getElementById('apply-design');
+            const clearDesignButton = document.getElementById('clear-design');
+            const embroideryPreview = document.getElementById('embroidery-preview');
+            const embroideryPriceElement = document.getElementById('embroidery-price');
+            const customDesignPriceElement = document.getElementById('custom-design-price');
+            const totalPriceElement = document.getElementById('total-price');
+
+            // Función para actualizar la vista previa inmediatamente
+            function updatePreviewImmediately() {
+                // Actualizar el texto en la vista previa
+                embroideryPreview.textContent}
+            }     )
