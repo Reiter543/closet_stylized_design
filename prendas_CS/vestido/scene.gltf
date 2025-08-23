@@ -1,0 +1,215 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 4618,
+      "max": [
+        18.434608459472656,
+        17.31528663635254,
+        135.58905029296875
+      ],
+      "min": [
+        -19.096508026123047,
+        -19.11614227294922,
+        66.37518310546875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 55416,
+      "componentType": 5126,
+      "count": 4618,
+      "max": [
+        0.9999862313270569,
+        0.9999668598175049,
+        0.9946157336235046
+      ],
+      "min": [
+        -0.9998325109481812,
+        -0.999984860420227,
+        -0.9988723993301392
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 4618,
+      "max": [
+        0.9980080127716064,
+        0.9573490023612976
+      ],
+      "min": [
+        0.0019920000340789557,
+        0.0019109999993816018
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 26688,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "alexander.cha.2000 (https://sketchfab.com/alexander.cha.2000)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/vestido-ccc3e809aaa042dfb8f0ad9f31f31936",
+      "title": "Vestido"
+    },
+    "generator": "Sketchfab-12.68.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 106752,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 36944,
+      "byteOffset": 106752,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 110832,
+      "byteOffset": 143696,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 254528,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_texture_transform",
+    "KHR_materials_clearcoat"
+  ],
+  "images": [
+    {
+      "uri": "textures/Chaleco_AlexstandardSurface1SG_clearcoat.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.396921304318747,
+          "clearcoatRoughnessFactor": 0.317879053195435,
+          "clearcoatTexture": {
+            "extensions": {
+              "KHR_texture_transform": {
+                "scale": [
+                  5,
+                  5
+                ]
+              }
+            },
+            "index": 0
+          }
+        }
+      },
+      "name": "Chaleco_AlexstandardSurface1SG",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.634048057688683,
+          0.634048057688683,
+          0.634048057688683,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.38476095799208365
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "Vestido_Alex.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_2"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}

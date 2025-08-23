@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closet Stylized - Diseña con estilo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --vinotinto: #7a1e2c;
+            --negro: #202020;
+            --gris: #464646;
+            --gris-claro: #e0e0e0;
+            --blanco: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--gris-claro);
+            color: var(--negro);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--vinotinto);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: var(--blanco);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .cart-icon {
+            color: var(--blanco);
+            font-size: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--blanco);
+            color: var(--vinotinto);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Hero Banner (Nuevo estilo similar a la imagen) */
+        .hero-banner {
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-banner h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-banner p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 30px 0;
+        }
+        
+        .section-title {
+            color: var(--vinotinto);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--vinotinto);
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--gris);
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: var(--gris-claro);
+            border: none;
+            outline: none;
+        }
+        
+        .tab.active {
+            background-color: var(--vinotinto);
+            color: var(--blanco);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Clothing Designer */
+        .designer-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .clothing-options {
+            flex: 1;
+            background-color: var(--blanco);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-container {
+            flex: 2;
+            background-color: var(--blanco);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .clothing-preview {
+            width: 300px;
+            height: 400px;
+            background-color: var(--gris-claro);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .preview-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .embroidery-preview {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px dashed var(--gris);
+            top: 50px;
+            left: 50px;
+            cursor: move;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .price-summary {
+            background-color: var(--gris-claro);
+            padding: 15px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        
+        .option-group {
+            margin-bottom: 20px;
+        }
+        
+        .option-group h3 {
+            margin-bottom: 10px;
+            color: var(--vinotinto);
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .color-option.selected {
+            border-color: var(--vinotinto);
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid var(--gris);
+            border-radius: 4px;
+        }
+        
+        .btn {
+            background-color: var(--vinotinto);
+            color: var(--blanco);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            background-color: #5a1520;
+        }
+        
+        .btn-secondary {
+            background-color: var(--gris);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #333333;
+        }
+        
+        /* Embroidery Designer */
+        .embroidery-designer {
+            background-color: var(--blanco);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .drawing-tools {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .canvas-container {
+            border: 1px solid var(--gris);
+            margin-bottom: 15px;
+        }
+        
+        /* Gallery */
+        .designs-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            background-color: var(--blanco);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .gallery-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-info {
+            padding: 15px;
+        }
+        
+        .designer-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .design-id {
+            color: var(--gris);
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .design-price {
+            font-weight: bold;
+            color: var(--vinotinto);
+            margin-bottom: 10px;
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6b6b;
+            color: var(--blanco);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Featured Products */
+        .product-card {
+            background-color: var(--blanco);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 300px;
+            background-color: var(--gris-claro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .sale-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: var(--blanco);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            margin-bottom: 15px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--gris);
+            margin-right: 10px;
+        }
+        
+        .current-price {
+            font-weight: bold;
+            color: var(--vinotinto);
+        }
+        
+        .rating {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        
+        /* Cart */
+        .cart-container {
+            background-color: var(--blanco);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            border-bottom: 1px solid var(--gris-claro);
+            padding: 15px 0;
+        }
+        
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--vinotinto);
+            font-weight: bold;
+        }
+        
+        .cart-item-remove {
+            color: #ff6b6b;
+            cursor: pointer;
+        }
+        
+        .cart-summary {
+            background-color: var(--gris-claro);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* Auth Forms */
+        .auth-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--gris);
+            border-radius: 4px;
+        }
+        
+        .form-error {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: var(--blanco);
+        }
+        
+        .footer-section a {
+            color: var(--gris-claro);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a:hover {
+            color: var(--blanco);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--gris);
+            margin-top: 20px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 5px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .designer-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-banner h1 {
+                font-size: 32px;
+            }
+            
+            .hero-banner p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex flex-col min-h-screen">
+        <!-- Header -->
+        <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Closet stylized</div>
+                <div class="nav-links">
+                    <a href="inicio.html">Inicio</a>
+                    <a href="diseño.html">Diseñar</a>
+                    <a href="galeria.html">Galería</a>
+                    <a href="inicio_de_sesion.html">Iniciar Sesión</a>
+                    <a href="carrito.html">carrito</a>
+                    <a href="bordados.html">diseño bordado</a>
+                    <a href="moodboard.html">colaboraciones</a>
+                    <a href="restricciones.html">consejos de diseño</a>
+                    
+                </div>
+                <div class="cart-icon" id="cart-button">
+                    🛒
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+        
+                
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="flex-1 overflow-auto">
+                <!-- Workspace Tabs -->
+                <div class="workspace-tab active" id="dashboard-tab">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-gray-800">Tableros recientes</h2>
+                            <div class="flex space-x-2">
+                               
+                            </div>
+                        </div>
+
+                        <!-- Design Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <!-- New Board Card -->
+                            <div class="bg-white rounded-lg border border-dashed border-gray-300 hover:border-indigo-300 transition cursor-pointer">
+                                <div class="p-4 h-full flex flex-col items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                    </svg>
+                                    <p class="mt-2 text-sm font-medium text-gray-600">Nuevo tablero</p>
+                                
+                                </div>
+                            </div>
+
+                            <!-- Existing Design Cards -->
+                            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition duration-200 design-card relative">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2c8ffa58-5f1a-48d2-a1ad-9c7b170b6c93.png" alt="Diseño de vestido formal con detalles geométricos en tonos azules y dorados" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-medium text-gray-800">Vestido De Gala</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Última modificación: hoy</p>
+                                </div>
+                                <div class="design-actions absolute top-2 right-2 opacity-0 transition">
+                                    <button class="bg-white p-2 rounded-full shadow hover:bg-gray-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition duration-200 design-card relative">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ddce3e21-5114-4455-bbc4-f6a5fcf6fba3.png" alt="Conjunto casual de jeans y chaqueta desgastada con parches bordados" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-medium text-gray-800">Look Urbano</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Colaboración con 3 personas</p>
+                                </div>
+                                <div class="design-actions absolute top-2 right-2 opacity-0 transition">
+                                    <button class="bg-white p-2 rounded-full shadow hover:bg-gray-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition duration-200 design-card relative">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/80b627b2-4bcf-4888-b8e5-a419fa91409a.png" alt="Colección de camisetas estampadas con motivos florales tropicales" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h3 class="font-medium text-gray-800">Colección Verano</h3>
+                                    <p class="text-sm text-gray-500 mt-1">14 diseños</p>
+                                </div>
+                                <div class="design-actions absolute top-2 right-2 opacity-0 transition">
+                                    <button class="bg-white p-2 rounded-full shadow hover:bg-gray-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                
+
+    <!-- Modal for New Collection -->
+    <div id="newCollectionModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl w-96">
+            <div class="p-6">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Crear nueva colección</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label for="collectionName" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                        <input type="text" id="collectionName" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label for="collectionDesc" class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+                        <textarea id="collectionDesc" rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Privacidad</label>
+                        <div class="mt-1 flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <input id="public" name="privacy" type="radio" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                <label for="public" class="ml-2 block text-sm text-gray-700">Pública</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="private" name="privacy" type="radio" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                <label for="private" class="ml-2 block text-sm text-gray-700">Privada</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button id="cancelCollectionBtn" type="button" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">Cancelar</button>
+                    <button id="createCollectionBtn" type="button" class="px-4 py-2 bg-indigo-600 rounded-md text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // UI Interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // User menu toggle
+            const userMenuBtn = document.getElementById('userMenuBtn');
+            const userMenu = document.getElementById('userMenu');
+            
+            userMenuBtn.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
+            });
+
+            // Close user menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenu.contains(event.target) && event.target !== userMenuBtn) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+
+            // New design button
+            const newDesignBtn = document.getElementById('newDesignBtn');
+            const dashboardTab = document.getElementById('dashboard-tab');
+            const designTab = document.getElementById('design-tab');
+            
+            newDesignBtn.addEventListener('click', function() {
+                dashboardTab.classList.remove('active');
+                designTab.classList.add('active');
+            });
+
+            // Back to dashboard from design tab
+            const backToDashboardBtn = document.getElementById('backToDashboardBtn');
+            
+            backToDashboardBtn.addEventListener('click', function() {
+                designTab.classList.remove('active');
+                dashboardTab.classList.add('active');
+            });
+
+            // Tool selection
+            const toolButtons = document.querySelectorAll('.tool-btn');
+            
+            toolButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    toolButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.classList.remove('text-indigo-600');
+                        btn.classList.add('text-gray-600');
+                    });
+                    
+                    this.classList.add('active');
+                    this.classList.add('text-indigo-600');
+                    this.classList.remove('text-gray-600');
+                });
+            });
+
+            // Simple canvas drawing functionality
+            const canvas = document.getElementById('designCanvas');
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            function startDrawing(e) {
+                isDrawing = true;
+                draw(e);
+            }
+
+            function draw(e) {
+                if (!isDrawing) return;
+
+                ctx.lineWidth = 3;
+                ctx.lineCap = 'round';
+                ctx.strokeStyle = '#3B82F6';
+
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            }
+
+            function stopDrawing() {
+                isDrawing = false;
+                ctx.beginPath();
+            }
+
+            // Add a template overlay (silhouette)
+            const templateCanvas = document.getElementById('templateOverlay');
+            const templateCtx = templateCanvas.getContext('2d');
+            
+            // Draw a simple dress silhouette
+            templateCtx.strokeStyle = '#AAAAAA';
+            templateCtx.lineWidth = 1;
+            
+            // Dress body
+            templateCtx.beginPath();
+            templateCtx.moveTo(400, 100);
+            templateCtx.lineTo(400, 300);
+            templateCtx.moveTo(400, 150);
+            templateCtx.quadraticCurveTo(350, 180, 300, 220);
+            templateCtx.moveTo(400, 150);
+            templateCtx.quadraticCurveTo(450, 180, 500, 220);
+            templateCtx.moveTo(300, 220);
+            templateCtx.quadraticCurveTo(350, 280, 400, 300);
+            templateCtx.moveTo(500, 220);
+            templateCtx.quadraticCurveTo(450, 280, 400, 300);
+            templateCtx.stroke();
+            
+            // Neckline
+            templateCtx.beginPath();
+            templateCtx.arc(400, 120, 30, Math.PI, 0, false);
+            templateCtx.stroke();
+            
+            // Collar
+            templateCtx.beginPath();
+            templateCtx.moveTo(370, 120);
+            templateCtx.lineTo(350, 150);
+            templateCtx.moveTo(430, 120);
+            templateCtx.lineTo(450, 150);
+            templateCtx.stroke();
+
+            // Filter buttons functionality
+            const allBtn = document.getElementById('allBtn');
+            const myDesignsBtn = document.getElementById('myDesignsBtn');
+            const collaborationsBtn = document.getElementById('collaborationsBtn');
+
+            allBtn.addEventListener('click', function() {
+                allBtn.classList.add('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                myDesignsBtn.classList.remove('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                collaborationsBtn.classList.remove('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                
+                // Here you would typically filter designs to show all
+                // Example: filterDesigns('all');
+                alert("Mostrando todos los diseños");
+            });
+
+            myDesignsBtn.addEventListener('click', function() {
+                myDesignsBtn.classList.add('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                allBtn.classList.remove('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                collaborationsBtn.classList.remove('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                
+                // Example: filterDesigns('my-designs');
+                alert("Mostrando mis diseños");
+            });
+
+            collaborationsBtn.addEventListener('click', function() {
+                collaborationsBtn.classList.add('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                allBtn.classList.remove('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                myDesignsBtn.classList.remove('border-indigo-300', 'bg-indigo-50', 'text-indigo-700');
+                
+                // Example: filterDesigns('collaborations');
+                alert("Mostrando colaboraciones");
+            });
+
+            // Modal interactions
+            const newCollectionModal = document.getElementById('newCollectionModal');
+            const newCollectionBtn = document.querySelector('[href="#"]'); // Simplified for demo
+            const cancelCollectionBtn = document.getElementById('cancelCollectionBtn');
+            const createCollectionBtn = document.getElementById('createCollectionBtn');
+
+            // Simulated new collection button (in actual app would be bound to real button)
+            document.querySelectorAll('a').forEach(link => {
+                if (link.textContent.includes('Colecciones')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        newCollectionModal.classList.remove('hidden');
+                    });
+                }
+            });
+
+            cancelCollectionBtn.addEventListener('click', function() {
+                newCollectionModal.classList.add('hidden');
+            });
+
+            createCollectionBtn.addEventListener('click', function() {
+                const collectionName = document.getElementById('collectionName').value;
+                if (collectionName) {
+                    // In a real app, would add to the collections list
+                    alert(`Colección "${collectionName}" creada!`);
+                    newCollectionModal.classList.add('hidden');
+                    // Clear form
+                    document.getElementById('collectionName').value = '';
+                    document.getElementById('collectionDesc').value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

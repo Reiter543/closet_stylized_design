@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pantalón Gris Nexus Tours
+* source:	https://sketchfab.com/3d-models/pantalon-gris-nexus-tours-fb1035f1c61d41e39d7b3eac576e0776
+* author:	albertoch (https://sketchfab.com/albertoch)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pantalón Gris Nexus Tours" (https://sketchfab.com/3d-models/pantalon-gris-nexus-tours-fb1035f1c61d41e39d7b3eac576e0776) by albertoch (https://sketchfab.com/albertoch) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

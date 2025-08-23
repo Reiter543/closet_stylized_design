@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiseModa - Tienda Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Navbar styles */
+        .navbar {
+            background-color: #8B1E3F;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: white;
+            color: #8B1E3F;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Products grid */
+        .products-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #aaa;
+            position: relative;
+        }
+        
+        .sale-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            margin-bottom: 10px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-right: 5px;
+        }
+        
+        .current-price {
+            color: #8B1E3F;
+            font-weight: bold;
+        }
+        
+        .star-rating {
+            color: gold;
+            margin-bottom: 10px;
+        }
+        
+        .add-to-cart, .view-options {
+            background-color: white;
+            border: 1px solid #8B1E3F;
+            color: #8B1E3F;
+            padding: 5px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart:hover, .view-options:hover {
+            background-color: #8B1E3F;
+            color: white;
+        }
+        
+        /* Cart styles */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        
+        .cart-modal {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .close-cart {
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .item-info {
+            flex-grow: 1;
+        }
+        
+        .item-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .item-quantity {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        
+        .cart-footer {
+            text-align: right;
+        }
+        
+        .cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .checkout-btn {
+            background-color: #8B1E3F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">closet stylized</div>
+        <ul class="nav-links">
+             <a href="inicio.html">Inicio</a>
+                   <a href="inicio.html">Inicio</a>
+                    <a href="diseño.html">Diseñar</a>
+                    <a href="galeria.html">Galería</a>
+                    <a href="inicio_de_sesion.html">Iniciar Sesión</a>
+                    <a href="carrito.html">carrito</a>
+                    <a href="bordados.html">diseño bordado</a>
+                    <a href="moodboard.html">colaboraciones</a>
+                    <a href="restricciones.html">consejos de diseño</a>
+        </ul>
+        <div class="cart-icon" id="cartIcon">
+            <span>🛒</span>
+            <div class="cart-count" id="cartCount">0</div>
+        </div>
+    </nav>
+    
+    <!-- Products Section -->
+    <section class="products-container">
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be generated by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Cart Modal -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h2>Carrito de Compras</h2>
+                <span class="close-cart" id="closeCart">&times;</span>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be added here -->
+                <p id="emptyCartMessage">Tu carrito está vacío.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">Total: <span id="cartTotal">$0 COP</span></div>
+                <button class="checkout-btn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Sample products data
+        const products = [
+            { id: 1, name: "Fancy Product", price: 120000, sale: false, original: 0, rating: 0, image: "450x300", type: "view" },
+            { id: 2, name: "Special Item", price: 18000, sale: true, original: 22000, rating: 5, image: "450x300", type: "add" },
+            { id: 3, name: "Sale Item", price: 25000, sale: true, original: 50000, rating: 0, image: "450x300", type: "add" },
+            { id: 4, name: "Popular Item", price: 40000, sale: false, original: 0, rating: 5, image: "450x300", type: "add" },
+            { id: 5, name: "Sale Item", price: 25000, sale: true, original: 50000, rating: 0, image: "450x300", type: "add" },
+            { id: 6, name: "Fancy Product", price: 120000, sale: false, original: 0, rating: 0, image: "450x300", type: "view" },
+            { id: 7, name: "Special Item", price: 18000, sale: true, original: 22000, rating: 5, image: "450x300", type: "add" },
+            { id: 8, name: "Popular Item", price: 40000, sale: false, original: 0, rating: 5, image: "450x300", type: "add" }
+        ];
+        
+        // DOM elements
+        const productsGrid = document.getElementById('productsGrid');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.getElementById('cartCount');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        
+        // Cart state
+        let cart = [];
+        
+        // Format currency function
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(amount);
+        }
+        
+        // Render products function
+        function renderProducts() {
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                let priceHTML = '';
+                if (product.sale) {
+                    priceHTML = `<span class="original-price">${formatCurrency(product.original)}</span> <span class="current-price">${formatCurrency(product.price)}</span>`;
+                } else {
+                    priceHTML = `<span class="current-price">${formatCurrency(product.price)}</span>`;
+                }
+                
+                let ratingHTML = '';
+                if (product.rating > 0) {
+                    ratingHTML = '<div class="star-rating">★★★★★</div>';
+                }
+                
+                let buttonHTML = '';
+                if (product.type === 'add') {
+                    buttonHTML = `<button class="add-to-cart" data-id="${product.id}">Add to cart</button>`;
+                } else {
+                    buttonHTML = `<button class="view-options">View options</button>`;
+                }
+                
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        ${product.image}
+                        ${product.sale ? '<div class="sale-badge">Sale</div>' : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">${product.name}</div>
+                        ${ratingHTML}
+                        <div class="product-price">
+                            ${priceHTML}
+                        </div>
+                        ${buttonHTML}
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+            
+            // Add event listeners to the "Add to cart" buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    addToCart(id);
+                });
+            });
+        }
+        
+        // Add to cart function
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+        }
+        
+        // Remove from cart function
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+        
+        // Update quantity function
+        function updateQuantity(id, quantity) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity = Math.max(1, quantity);
+                updateCart();
+            }
+        }
+        
+        // Update cart function
+        function updateCart() {
+            // Update cart count
+            const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = itemCount;
+            
+            // Update cart items display
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartItems.innerHTML = '<p id="emptyCartMessage">Tu carrito está vacío.</p>';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                
+                let cartHTML = '';
+                cart.forEach(item => {
+                    cartHTML += `
+                        <div class="cart-item">
+                            <div class="item-info">
+                                <div>${item.name}</div>
+                                <div>${formatCurrency(item.price)} x ${item.quantity}</div>
+                            </div>
+                            <div class="item-controls">
+                                <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                <input type="number" class="item-quantity" value="${item.quantity}" min="1" data-id="${item.id}">
+                                <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                <button class="remove-btn" data-id="${item.id}">🗑️</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                cartItems.innerHTML = cartHTML;
+                
+                // Add event listeners to the cart buttons
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = parseInt(this.getAttribute('data-id'));
+                        removeFromCart(id);
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = parseInt(this.getAttribute('data-id'));
+                        const item = cart.find(item => item.id === id);
+                        if (item) {
+                            updateQuantity(id, item.quantity - 1);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-btn.plus').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = parseInt(this.getAttribute('data-id'));
+                        const item = cart.find(item => item.id === id);
+                        if (item) {
+                            updateQuantity(id, item.quantity + 1);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.item-quantity').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const id = parseInt(this.getAttribute('data-id'));
+                        const quantity = parseInt(this.value);
+                        if (!isNaN(quantity)) {
+                            updateQuantity(id, quantity);
+                        }
+                    });
+                });
+            }
+            
+            // Update cart total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = formatCurrency(total);
+        }
+        
+        // Event listeners
+        cartIcon.addEventListener('click', function() {
+            cartOverlay.style.display = 'flex';
+        });
+        
+        closeCart.addEventListener('click', function() {
+            cartOverlay.style.display = 'none';
+        });
+        
+        cartOverlay.addEventListener('click', function(event) {
+            if (event.target === cartOverlay) {
+                cartOverlay.style.display = 'none';
+            }
+        });
+        
+        // Initialize
+        renderProducts();
+        updateCart();
+    </script>
+</body>
+</html>

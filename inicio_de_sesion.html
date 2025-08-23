@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiseModa - Registrarse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #781828;
+        }
+        
+        .header {
+            background-color: #781828;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav {
+            display: flex;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        
+        .cart-icon {
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: white;
+            color: #781828;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .registration-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        .registration-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-row {
+            margin-bottom: 20px;
+        }
+        
+        .form-row label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-row input, .form-row select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .form-row select {
+            background-color: white;
+        }
+        
+        .parent-email-section {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            border-left: 3px solid #781828;
+        }
+        
+        .parent-email-title {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .parent-email-info {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .submit-button {
+            background-color: #781828;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        .login-link a {
+            color: #782818;
+            text-decoration: none;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .hidden-field {
+            display: none;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 12px;
+            color: #333;
+            background-color: #f9f9f9;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-links {
+            margin-top: 10px;
+        }
+        
+        .footer-links a {
+            color: #782818;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Closet stylized</div>
+        <div class="nav">
+             <a href="inicio.html">Inicio</a>
+                    <a href="diseño.html">Diseñar</a>
+                    <a href="galeria.html">Galería</a>
+                    <a href="inicio_de_sesion.html">Iniciar Sesión</a>
+                    <a href="carrito.html">carrito</a>
+                    <a href="bordados.html">diseño bordado</a>
+                    <a href="moodboard.html">colaboraciones</a>
+                    <a href="restricciones.html">consejos de diseño</a>
+        </div>
+        <div class="cart-icon">
+            🛒
+            <div class="cart-count">0</div>
+        </div>
+    </div>
+    
+    <div class="registration-container">
+        <div class="registration-title">Create Account</div>
+        
+        <form id="registration-form">
+            <div class="form-row">
+                <label for="nombre-completo">Nombre Completo</label>
+                <input type="text" id="nombre-completo" name="nombre-completo" required>
+            </div>
+            
+            <div class="form-row">
+                <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+            </div>
+            
+            <div class="parent-email-section" id="parent-email-section">
+                <div class="parent-email-title">Permiso Parental Requerido</div>
+                <div class="parent-email-info">Necesitamos el correo electrónico de un padre o tutor para enviar una solicitud de permiso.</div>
+                <input type="email" id="parent-email" name="parent-email" placeholder="Correo electrónico del padre/tutor">
+            </div>
+            
+            <div class="form-row">
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+            
+            <div class="form-row">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion">
+            </div>
+            
+            <div class="form-row">
+                <label for="numero">Número de Teléfono</label>
+                <input type="tel" id="numero" name="numero">
+            </div>
+            
+            <div class="form-row">
+                <label for="tipo-usuario">Tipo de Usuario</label>
+                <select id="tipo-usuario" name="tipo-usuario" required>
+                    <option value="">Selecciona un tipo de usuario</option>
+                    <option value="diseñador">Diseñador</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="vendedor">Vendedor</option>
+                    <option value="espectador">Espectador</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="form-row">
+                <label for="confirm-password">Confirmar Contraseña</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            
+            <button type="submit" class="submit-button">Create Account</button>
+        </form>
+        
+        <div class="login-link">
+            <p>Have an account? <a href="#">Go to login</a></p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div>Copyright © Your Website 2023</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </div>
+    
+    <script>
+        const form = document.getElementById('registration-form');
+        const fechaNacimiento = document.getElementById('fecha-nacimiento');
+        const parentEmailSection = document.getElementById('parent-email-section');
+        const parentEmail = document.getElementById('parent-email');
+        const tipoUsuario = document.getElementById('tipo-usuario');
+        const direccionField = document.getElementById('direccion');
+        const numeroField = document.getElementById('numero');
+        
+        // Verificar edad cuando cambia la fecha de nacimiento
+        fechaNacimiento.addEventListener('change', function() {
+            const birthDate = new Date(this.value);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            if (age < 18) {
+                parentEmailSection.style.display = 'block';
+                parentEmail.required = true;
+            } else {
+                parentEmailSection.style.display = 'none';
+                parentEmail.required = false;
+            }
+        });
+        
+        // Mostrar/ocultar campos según el tipo de usuario
+        tipoUsuario.addEventListener('change', function() {
+            const userType = this.value;
+            
+            // Mostrar todos los campos por defecto
+            direccionField.parentElement.style.display = 'block';
+            numeroField.parentElement.style.display = 'block';
+            fechaNacimiento.parentElement.style.display = 'block';
+            
+            if (userType === 'espectador') {
+                // Para espectador: solo nombre y correo
+                direccionField.parentElement.style.display = 'none';
+                numeroField.parentElement.style.display = 'none';
+                fechaNacimiento.parentElement.style.display = 'none';
+                parentEmailSection.style.display = 'none';
+                
+                direccionField.required = false;
+                numeroField.required = false;
+                fechaNacimiento.required = false;
+                parentEmail.required = false;
+            } else {
+                // Para otros tipos: todos los campos
+                direccionField.required = true;
+                numeroField.required = true;
+                fechaNacimiento.required = true;
+                
+                // Volver a verificar la edad
+                const birthDateEvent = new Event('change');
+                fechaNacimiento.dispatchEvent(birthDateEvent);
+            }
+        });
+        
+        // Validación del formulario
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+            
+            // Aquí se enviaría el formulario al servidor
+            alert('Formulario enviado correctamente');
+        });
+    </script>
+</body>
+</html>

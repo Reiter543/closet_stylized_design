@@ -1,0 +1,11 @@
+Model Information:
+* title:	Metaretail: Chaqueta Roja Con Percha
+* source:	https://sketchfab.com/3d-models/metaretail-chaqueta-roja-con-percha-61d99f299b0c47c59928f1d5b9e38620
+* author:	vmmaniac (https://sketchfab.com/vmmaniac)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Metaretail: Chaqueta Roja Con Percha" (https://sketchfab.com/3d-models/metaretail-chaqueta-roja-con-percha-61d99f299b0c47c59928f1d5b9e38620) by vmmaniac (https://sketchfab.com/vmmaniac) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

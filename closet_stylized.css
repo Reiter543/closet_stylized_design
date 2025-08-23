@@ -1,0 +1,60 @@
+/* estilos.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #8b1f2b; /* Vinotinto */
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+section {
+    margin: 20px;
+}
+
+button {
+    background-color: #8b1f2b; /* Vinotinto */
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #5a0d1a;
+    }
+
+input, select {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+h2, h3 {
+    color: #8b1f2b;
+}
+
+#precio, #total {
+    font-weight: bold;
+    color: green;
+}
+
+#productos-carrito {
+    margin-top: 20px;
+}
+

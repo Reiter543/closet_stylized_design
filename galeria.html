@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiseModa - Diseña tu Ropa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        .header {
+            background-color: #781828;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            margin-left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav {
+            display: flex;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .cart-icon {
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: white;
+            color: #781828;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .hero {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .community-section {
+            padding: 30px;
+        }
+        
+        .section-title {
+            color: #781828;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #781828;
+            padding-bottom: 10px;
+        }
+        
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        
+        .product-card {
+            width: 250px;
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .sale-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+        
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .sales-info {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        
+        .sales-count {
+            color: #781828;
+            font-weight: bold;
+        }
+        
+        .sales-total {
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .stars {
+            color: gold;
+            margin: 10px 0;
+        }
+        
+        .add-button {
+            background-color: #781828;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .copyright-section {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .publish-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .publish-toggle input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Closet stylized</div>
+        <div class="nav">
+            <a href="inicio.html">Inicio</a>
+                    <a href="diseño.html">Diseñar</a>
+                    <a href="galeria.html">Galería</a>
+                    <a href="inicio_de_sesion.html">Iniciar Sesión</a>
+                    <a href="carrito.html">carrito</a>
+                    <a href="bordados.html">diseño bordado</a>
+                    <a href="moodboard.html">colaboraciones</a>
+                    <a href="restricciones.html">consejos de diseño</a>
+        </div>
+        <div class="cart-icon">
+            🛒
+            <div class="cart-count">0</div>
+        </div>
+    </div>
+    
+    <div class="hero">
+        <h1>Diseña con estilo</h1>
+        <p>Crea tu propia ropa personalizada y única</p>
+    </div>
+    
+    <div class="community-section">
+        <h2 class="section-title">Descubre Diseños de Nuestra Comunidad</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.pinimg.com/736x/38/0f/fe/380ffe23add20a4a765e68554034ebe8.jpg" alt="Producto 1" id="product-image-1">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Camiseta Urban</h3>
+                    <div class="sales-info">
+                        <span class="sales-count">Ventas: 24</span>
+                        <span class="sales-total">$768.000 COP</span>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <button class="add-button">Añadir al carrito</button>
+                    <div class="publish-toggle">
+                        <input type="checkbox" id="publish-1" checked>
+                        <label for="publish-1">Publicar</label>
+                    </div>
+                    <div class="copyright-section">
+                        © Derechos reservados
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.pinimg.com/1200x/42/59/6c/42596c014118964358be19c1671ec93e.jpg" alt="Producto 2" id="product-image-2">
+                </div>
+                <div class="sale-badge">Sale</div>
+                <div class="product-info">
+                    <h3 class="product-title">Chaqueta Premium</h3>
+                    <div class="sales-info">
+                        <span class="sales-count">Ventas: 18</span>
+                        <span class="sales-total">$1.530.000 COP</span>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <button class="add-button">Añadir al carrito</button>
+                    <div class="publish-toggle">
+                        <input type="checkbox" id="publish-2" checked>
+                        <label for="publish-2">Publicar</label>
+                    </div>
+                    <div class="copyright-section">
+                        © Derechos reservados
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkC2XBDrYG3rU34X4F8oYRNiTwu71U29MYhQ&s" alt="Producto 3" id="product-image-3">
+                </div>
+                <div class="sale-badge">Sale</div>
+                <div class="product-info">
+                    <h3 class="product-title">Pantalón Casual</h3>
+                    <div class="sales-info">
+                        <span class="sales-count">Ventas: 15</span>
+                        <span class="sales-total">$630.000 COP</span>
+                    </div>
+                    <div class="stars">★★★★☆</div>
+                    <button class="add-button">Añadir al carrito</button>
+                    <div class="publish-toggle">
+                        <input type="checkbox" id="publish-3" checked>
+                        <label for="publish-3">Publicar</label>
+                    </div>
+                    <div class="copyright-section">
+                        © Derechos reservados
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.pinimg.com/1200x/42/62/68/4262687c84494174cf5208cf9545cccc.jpg" alt="Producto 4" id="product-image-4">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Buso Deportivo</h3>
+                    <div class="sales-info">
+                        <span class="sales-count">Ventas: 21</span>
+                        <span class="sales-total">$945.000 COP</span>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <button class="add-button">Añadir al carrito</button>
+                    <div class="publish-toggle">
+                        <input type="checkbox" id="publish-4" checked>
+                        <label for="publish-4">Publicar</label>
+                    </div>
+                    <div class="copyright-section">
+                        © Derechos reservados
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para cargar imágenes diseñadas desde la sección "diseñar"
+        function cargarImagenDiseñada(idProducto, urlImagen) {
+            const imagenElement = document.getElementById('product-image-' + idProducto);
+            if (imagenElement) {
+                imagenElement.src = urlImagen;
+            }
+        }
+        
+        // Función para actualizar estado de publicación
+        function actualizarPublicacion() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const productId = this.id.split('-')[1];
+                    console.log(`Producto ${productId} publicación: ${this.checked ? 'Activa' : 'Inactiva'}`);
+                    // Aquí se podría agregar código para enviar esta información al servidor
+                });
+            });
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            actualizarPublicacion();
+            
+            // Ejemplo de cómo se cargarían las imágenes (simulado)
+            // En una implementación real, estas imágenes vendrían del módulo de diseño
+            // cargarImagenDiseñada(1, 'ruta/a/imagen-diseñada-1.jpg');
+        });
+    </script>
+</body>
+</html>

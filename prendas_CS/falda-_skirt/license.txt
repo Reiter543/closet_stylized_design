@@ -1,0 +1,11 @@
+Model Information:
+* title:	Falda- skirt
+* source:	https://sketchfab.com/3d-models/falda-skirt-21cb00564a0043a4a1b76ab8fcf7b7ec
+* author:	Kanashi_Aki (https://sketchfab.com/KanashiAki07)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Falda- skirt" (https://sketchfab.com/3d-models/falda-skirt-21cb00564a0043a4a1b76ab8fcf7b7ec) by Kanashi_Aki (https://sketchfab.com/KanashiAki07) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

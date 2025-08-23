@@ -1,0 +1,11 @@
+Model Information:
+* title:	man shorts
+* source:	https://sketchfab.com/3d-models/man-shorts-9f872504291644d8b05c0b85702d019e
+* author:	MalahovaVladislava (https://sketchfab.com/MalahovaVladislava)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "man shorts" (https://sketchfab.com/3d-models/man-shorts-9f872504291644d8b05c0b85702d019e) by MalahovaVladislava (https://sketchfab.com/MalahovaVladislava) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

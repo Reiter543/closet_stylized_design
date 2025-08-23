@@ -1,0 +1,11 @@
+Model Information:
+* title:	leather jacket
+* source:	https://sketchfab.com/3d-models/leather-jacket-558d94e97d0b490db39ffe5d8bb61672
+* author:	vicente betoret ferrero (https://sketchfab.com/deathcow)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "leather jacket" (https://sketchfab.com/3d-models/leather-jacket-558d94e97d0b490db39ffe5d8bb61672) by vicente betoret ferrero (https://sketchfab.com/deathcow) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

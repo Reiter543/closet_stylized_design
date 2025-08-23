@@ -1,0 +1,11 @@
+Model Information:
+* title:	Camisa Shirt
+* source:	https://sketchfab.com/3d-models/camisa-shirt-7ef71c81a9324c25a80b317ea88ab9c3
+* author:	3Dji (https://sketchfab.com/3Dji)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Camisa Shirt" (https://sketchfab.com/3d-models/camisa-shirt-7ef71c81a9324c25a80b317ea88ab9c3) by 3Dji (https://sketchfab.com/3Dji) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
