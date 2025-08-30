@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Closet Stylized - Diseña tu Ropa</title>
+    <script src="static/js/responsive.js" defer></script>
     <style>
         :root {
             --vinotinto: #7a1e2c;
@@ -27,8 +28,20 @@
         
         .container {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
             padding: 0 15px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
         }
         
         /* Header */
@@ -54,6 +67,13 @@
             display: flex;
             gap: 20px;
         }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: var(--blanco);
+            font-size: 24px;
+        }
         
         .nav-links a {
             color: var(--blanco);
@@ -65,6 +85,32 @@
         
         .nav-links a:hover {
             background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: var(--vinotinto);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            nav {
+                position: relative;
+            }
         }
         
         .cart-icon {
@@ -113,6 +159,20 @@
         main {
             padding: 30px 0;
         }
+
+        @media screen and (max-width: 768px) {
+            .hero-banner {
+                padding: 50px 0;
+            }
+
+            .hero-banner h1 {
+                font-size: 32px;
+            }
+
+            .hero-banner p {
+                font-size: 16px;
+            }
+        }
         
         .section-title {
             color: var(--vinotinto);
@@ -126,6 +186,7 @@
             display: flex;
             margin-bottom: 20px;
             border-bottom: 1px solid var(--gris);
+            flex-wrap: wrap;
         }
         
         .tab {
@@ -134,6 +195,9 @@
             background-color: var(--gris-claro);
             border: none;
             outline: none;
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
         }
         
         .tab.active {
@@ -153,6 +217,7 @@
         .designer-container {
             display: flex;
             gap: 30px;
+            flex-wrap: wrap;
             margin-bottom: 30px;
         }
         
@@ -623,8 +688,9 @@
         <div class="container">
             <nav>
                 <div class="logo">Closet stylized</div>
+                <button class="menu-toggle" aria-label="Menú">☰</button>
                 <div class="nav-links">
-                   <a href="index.html">Inicio</a>
+                    <a href="index.html">Inicio</a>
                     <a href="diseño.html">Diseñar</a>
                     <a href="galeria.html">Galería</a>
                     <a href="inicio_de_sesion.html">Iniciar Sesión</a>
@@ -632,7 +698,6 @@
                     <a href="bordados.html">diseño bordado</a>
                     <a href="moodboard.html">colaboraciones</a>
                     <a href="restricciones.html">consejos de diseño</a>
-                    
                 </div>
                 <div class="cart-icon" id="cart-button">
                     🛒
