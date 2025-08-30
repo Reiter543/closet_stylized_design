@@ -3,75 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Closet stylized - Diseñador de Prendas</title>
+    <title>Closet Stylized - Galería</title>
+    <script src="static/js/responsive.js" defer></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+        :root {
+            --vinotinto: #7a1e2c;
+            --negro: #202020;
+            --gris: #464646;
+            --gris-claro: #e0e0e0;
+            --blanco: #ffffff;
         }
         
-        .header {
-            background-color: #781828;
-            color: white;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--gris-claro);
+            color: var(--negro);
+        }
+        
+        header {
+            background-color: var(--vinotinto);
             padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            margin-left: 20px;
+            color: var(--blanco);
             font-size: 24px;
             font-weight: bold;
         }
         
-        .nav {
+        .nav-links {
             display: flex;
+            gap: 20px;
         }
         
-        .nav a {
-            color: white;
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: var(--blanco);
+            font-size: 24px;
+        }
+        
+        .nav-links a {
+            color: var(--blanco);
             text-decoration: none;
-            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
         .cart-icon {
-            margin-right: 20px;
+            color: var(--blanco);
+            font-size: 20px;
             position: relative;
+            cursor: pointer;
         }
         
         .cart-count {
             position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: white;
-            color: #781828;
+            top: -8px;
+            right: -8px;
+            background-color: var(--blanco);
+            color: var(--vinotinto);
             border-radius: 50%;
             width: 20px;
             height: 20px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             font-size: 12px;
+            font-weight: bold;
         }
         
-        .hero {
-            background-color: #222;
-            color: white;
-            text-align: center;
+        .hero-banner {
+            background-color: var(--negro);
+            color: var(--blanco);
             padding: 100px 0;
+            text-align: center;
         }
         
-        .hero h1 {
-            font-size: 42px;
+        .hero-banner h1 {
+            font-size: 48px;
             margin-bottom: 20px;
         }
         
-        .hero p {
+        .hero-banner p {
             font-size: 18px;
             margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: var(--vinotinto);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+            }
+            
+            .hero-banner {
+                padding: 60px 0;
+            }
+            
+            .hero-banner h1 {
+                font-size: 32px;
+            }
+            
+            .hero-banner p {
+                font-size: 16px;
+            }
         }
         
         .community-section {
@@ -187,27 +266,34 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">Closet stylized</div>
-        <div class="nav">
-            <a href="index.html">Inicio</a>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Closet Stylized</div>
+                <button class="menu-toggle">☰</button>
+                <div class="nav-links">
+                    <a href="index.html">Inicio</a>
                     <a href="diseño.html">Diseñar</a>
                     <a href="galeria.html">Galería</a>
                     <a href="inicio_de_sesion.html">Iniciar Sesión</a>
-                    <a href="carrito.html">carrito</a>
-                    <a href="bordados.html">diseño bordado</a>
-                    <a href="moodboard.html">colaboraciones</a>
-                    <a href="restricciones.html">consejos de diseño</a>
+                    <a href="carrito.html">Carrito</a>
+                    <a href="bordados.html">Diseño Bordado</a>
+                    <a href="moodboard.html">Colaboraciones</a>
+                    <a href="restricciones.html">Consejos de Diseño</a>
+                </div>
+                <div class="cart-icon">
+                    🛒
+                    <div class="cart-count">0</div>
+                </div>
+            </nav>
         </div>
-        <div class="cart-icon">
-            🛒
-            <div class="cart-count">0</div>
-        </div>
-    </div>
+    </header>
     
-    <div class="hero">
-        <h1>Diseña con estilo</h1>
-        <p>Crea tu propia ropa personalizada y única</p>
+    <div class="hero-banner">
+        <div class="container">
+            <h1>Diseña con Estilo</h1>
+            <p>Descubre y Comparte Diseños Únicos</p>
+        </div>
     </div>
     
     <div class="community-section">
